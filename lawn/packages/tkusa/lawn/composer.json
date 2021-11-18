@@ -1,0 +1,14 @@
+{
+    "name": "tkusa/lawn",
+    "description": "Laravel package to make a ground cover of your project",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tkusa",
+            "email": "th.kusa87@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
