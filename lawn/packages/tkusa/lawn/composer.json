@@ -10,5 +10,26 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.65"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tkusa\\Lawn\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tkusa\\Lawn\\Providers\\LawnServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    }
 }
