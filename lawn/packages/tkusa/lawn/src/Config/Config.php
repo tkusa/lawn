@@ -17,5 +17,7 @@ class Config
     ];
 
     const CONTROLLER_PATH = 'Http/Controllers/';
+    const MODEL_PATH = 'Models/';
+    const MIGRATION_PATH = 'database/migrations/';
 
 }

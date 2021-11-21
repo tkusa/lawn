@@ -17,6 +17,8 @@ class LawnServiceProvider extends ServiceProvider
     {
         app()->bind('Parser', \Tkusa\Lawn\Parser::class);
         app()->bind('ControllerBuilder', \Tkusa\Lawn\Builders\ControllerBuilder::class);
+        app()->bind('ModelBuilder', \Tkusa\Lawn\Builders\ModelBuilder::class);
+        app()->bind('MigrationBuilder', \Tkusa\Lawn\Builders\MigrationBuilder::class);
     }
 
     /**

@@ -30,4 +30,16 @@ class Parser
         }
         return $resources;
     }
+
+    /**
+     * Get defined columns of entity
+     */
+    public function column($name)
+    {
+        $columns = config('lawn.'.$name.'.column');
+        if (empty($columns)) {
+            return [];
+        }
+        return $columns;
+    }
 }

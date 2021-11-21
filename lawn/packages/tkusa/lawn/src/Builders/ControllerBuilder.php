@@ -20,11 +20,9 @@ class ControllerBuilder
         //plural
         $names = Str::plural($name);
 
-        $resources = Parser::resources($name);
-
         $base = ControllerComponent::base();
         $use = $this->uses();
-        $func = $this->functions($resources);
+        $func = $this->functions($name);
 
         //replace placeholders
         $base = str_replace('%use%', $use, $base);
@@ -44,9 +42,10 @@ class ControllerBuilder
     /**
      * Get a string of functions
      */
-    public function functions($resources)
+    public function functions($name)
     {
 
+        $resources = Parser::resource($name);
         $funcs = "";
         foreach ($resources as $resource) {
             $funcs .= ControllerComponent::call($resource);
@@ -56,6 +55,9 @@ class ControllerBuilder
 
     }
 
+    /**
+     * Get a string of dependancies
+     */
     public function uses()
     {
         return "";

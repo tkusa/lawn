@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Tkusa\Lawn\Config\Config;
 use Illuminate\Support\Facades\File;
 use Tkusa\Lawn\Facades\Builders\ControllerBuilder;
+use Tkusa\Lawn\Facades\Builders\ModelBuilder;
+use Tkusa\Lawn\Facades\Builders\MigrationBuilder;
 
 class BuildCommand extends Command
 {
@@ -41,8 +43,10 @@ class BuildCommand extends Command
     public function handle()
     {
 
-        $name = 'model';
+        $name = 'post';
         $res = ControllerBuilder::build($name);
+        $res = ModelBuilder::build($name);
+        $res = MigrationBuilder::build($name);
 
 
         return Command::SUCCESS;
