@@ -29,7 +29,7 @@ class ViewBuilder
             $template = str_replace('%name%', $dict['snake'], $template);
 
             //path for the file creating
-            $path = package_path(Config::VIEW_PATH . $resource .'.blade.php');
+            $path = package_path(Config::VIEW_PATH .$dict['snake']. $resource .'.blade.php');
             //write a file
             $res = file_put_contents($path, $template);
         }

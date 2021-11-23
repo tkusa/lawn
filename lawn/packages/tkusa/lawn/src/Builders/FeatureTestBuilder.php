@@ -28,7 +28,7 @@ class FeatureTestBuilder
         $template = str_replace('%name%', $dict['kebab'], $template);
 
         //path for the file creating
-        $path = package_path(Config::TEST_PATH .'Feature/'. $dict['studly'] .'ControllerTest.php');
+        $path = package_path(Config::FEATURE_TEST_PATH . $dict['studly'] .'ControllerTest.php');
         //write a file
         $res = file_put_contents($path, $template);
 

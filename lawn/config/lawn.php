@@ -14,7 +14,7 @@ return [
     |
     */
     'entity' => [
-        'post',
+        'post', 'comment',
     ],
 
     'post' => [

@@ -22,9 +22,11 @@ class Config
     const MIGRATION_PATH = 'Build/database/migrations/';
     const FACTORY_PATH = 'Build/database/factories/';
     const SEEDER_PATH = 'Build/database/seeders/';
-    const ROUTE_PATH = 'Build/routes/lawn.php';
-    const VIEW_PATH = 'Build/resources/views/lawn/';
+    const ROUTE_PATH = 'Build/routes/';
+    const VIEW_PATH = 'Build/resources/views/';
     const TEST_PATH = 'Build/tests/';
+    const UNIT_TEST_PATH = 'Build/tests/Unit/';
+    const FEATURE_TEST_PATH = 'Build/tests/Feature/';
 
     const SEEDER_COUNT = 10;
 

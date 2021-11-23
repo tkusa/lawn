@@ -27,7 +27,7 @@ class RouteBuilder
         $base = str_replace('%route%', $route, $base);
 
         //path for the file creating
-        $path = package_path(Config::ROUTE_PATH);
+        $path = package_path(Config::ROUTE_PATH.'lawn.php');
 
         //write a file
         if (file_exists($path)) {

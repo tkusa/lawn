@@ -27,7 +27,7 @@ class UnitTestBuilder
         $template = str_replace('%Name%', $dict['studly'], $template);
 
         //path for the file creating
-        $path = package_path(Config::TEST_PATH .'Unit/'. $dict['studly'] .'Test.php');
+        $path = package_path(Config::UNIT_TEST_PATH . $dict['studly'] .'Test.php');
         //write a file
         $res = file_put_contents($path, $template);
 

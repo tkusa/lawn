@@ -43,7 +43,28 @@ class LawnServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../Config/'.Config::CONF_NAME => config_path(Config::CONF_NAME),
-        ]);
+        ], 'lawn-config');
+
+        $this->publishes([
+            //controller
+            __DIR__.'/../'.Config::CONTROLLER_PATH => app_path('Http/Controllers/Lawn'),
+            //request
+            __DIR__.'/../'.Config::REQUEST_PATH => app_path('Http/Requests/Lawn'),
+            //model
+            __DIR__.'/../'.Config::MODEL_PATH => app_path('Models/Lawn'),
+            //migration
+            __DIR__.'/../'.Config::MIGRATION_PATH => database_path('migrations/lawn'),
+            //factory
+            __DIR__.'/../'.Config::FACTORY_PATH => database_path('factories/lawn'),
+            //seeder
+            __DIR__.'/../'.Config::SEEDER_PATH => database_path('seeders/lawn'),
+            //route
+            __DIR__.'/../'.Config::ROUTE_PATH => base_path('routes/lawn.php'),
+            //view
+            __DIR__.'/../'.Config::VIEW_PATH => resource_path('views/lawn'),
+            //test
+            __DIR__.'/../'.Config::TEST_PATH => base_path('tests/lawn'),
+        ], 'lawn-build');
     }
 
 
