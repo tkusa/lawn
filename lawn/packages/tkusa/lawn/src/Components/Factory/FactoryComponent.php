@@ -1,9 +1,9 @@
 <?php
 
-namespace Tkusa\Lawn\Components\Migration;
+namespace Tkusa\Lawn\Components\Factory;
 
 
-class MigrationComponent
+class FactoryComponent
 {
 
     /**
@@ -33,18 +33,15 @@ class MigrationComponent
     public static function string($def)
     {
         $name = $def['name'];
-        $str = '$table->string(\''.$name.'\'';
-        if (isset($def['length'])) {
-            $str .= ', '.$def['length'];
+        $str = '"'. $name . '" => $this->faker->text(';
+        if ($def['length']) {
+            $str .= $def['length'];
         }
-        $str .= ')';
-        if (isset($def['nullable']) && $def['nullable']) {
-            $str .= '->nullable()';
-        }
-        $str .= ';
+        $str .= '),
         ';
         return $str;
     }
+
 
 
 }

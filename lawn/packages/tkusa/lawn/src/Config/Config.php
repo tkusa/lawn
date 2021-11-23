@@ -16,8 +16,10 @@ class Config
         'destroy',
     ];
 
-    const CONTROLLER_PATH = 'Http/Controllers/';
-    const MODEL_PATH = 'Models/';
-    const MIGRATION_PATH = 'database/migrations/';
+    const CONTROLLER_PATH = 'Build/Http/Controllers/';
+    const REQUEST_PATH = 'Build/Http/Requests/';
+    const MODEL_PATH = 'Build/Models/';
+    const MIGRATION_PATH = 'Build/database/migrations/';
+    const FACTORY_PATH = 'Build/database/factories/';
 
 }

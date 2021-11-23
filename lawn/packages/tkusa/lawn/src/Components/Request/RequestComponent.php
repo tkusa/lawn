@@ -1,9 +1,9 @@
 <?php
 
-namespace Tkusa\Lawn\Components\Migration;
+namespace Tkusa\Lawn\Components\Request;
 
 
-class MigrationComponent
+class RequestComponent
 {
 
     /**
@@ -33,18 +33,20 @@ class MigrationComponent
     public static function string($def)
     {
         $name = $def['name'];
-        $str = '$table->string(\''.$name.'\'';
+        $str = '"'. $name . '" => ["string", ';
+        if (isset($def['nullable']) && !$def['nullable']) {
+            $str .= '"required", ';
+        } else {
+            $str .= '"nullable", ';
+        }
         if (isset($def['length'])) {
-            $str .= ', '.$def['length'];
+            $str .= '"max:'. $def['length'] .'", ';
         }
-        $str .= ')';
-        if (isset($def['nullable']) && $def['nullable']) {
-            $str .= '->nullable()';
-        }
-        $str .= ';
+        $str .= '],
         ';
         return $str;
     }
+
 
 
 }

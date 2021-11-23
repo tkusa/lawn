@@ -6,8 +6,10 @@ use Illuminate\Console\Command;
 use Tkusa\Lawn\Config\Config;
 use Illuminate\Support\Facades\File;
 use Tkusa\Lawn\Facades\Builders\ControllerBuilder;
+use Tkusa\Lawn\Facades\Builders\RequestBuilder;
 use Tkusa\Lawn\Facades\Builders\ModelBuilder;
 use Tkusa\Lawn\Facades\Builders\MigrationBuilder;
+use Tkusa\Lawn\Facades\Builders\FactoryBuilder;
 
 class BuildCommand extends Command
 {
@@ -23,7 +25,7 @@ class BuildCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Make your garden covered by lawn';
+    protected $description = 'Make your garden covered by Lawn';
 
     /**
      * Create a new command instance.
@@ -44,9 +46,11 @@ class BuildCommand extends Command
     {
 
         $name = 'post';
-        $res = ControllerBuilder::build($name);
-        $res = ModelBuilder::build($name);
-        $res = MigrationBuilder::build($name);
+        $res = RequestBuilder::build($name);
+        // $res = ControllerBuilder::build($name);
+        // $res = ModelBuilder::build($name);
+        // $res = MigrationBuilder::build($name);
+        // $res = FactoryBuilder::build($name);
 
 
         return Command::SUCCESS;

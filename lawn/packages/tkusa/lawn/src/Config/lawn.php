@@ -17,17 +17,24 @@ return [
         'post',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Definitions for each entities
+    |--------------------------------------------------------------------------
+    |
+    */
     'post' => [
         'column' => [
             'title' => [
-                'name' => 'title',
-                'type' => 'string',
+                'name' => 'title', //required
+                'type' => 'string', //required
                 'length' => '255',
             ],
             'contents' => [
                 'name' => 'contents',
                 'type' => 'string',
                 'length' => '5000',
+                'nullable' => true,
             ],
         ],
 
