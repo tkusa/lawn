@@ -10,8 +10,11 @@ use Tkusa\Lawn\Facades\Builders\RequestBuilder;
 use Tkusa\Lawn\Facades\Builders\ModelBuilder;
 use Tkusa\Lawn\Facades\Builders\MigrationBuilder;
 use Tkusa\Lawn\Facades\Builders\FactoryBuilder;
+use Tkusa\Lawn\Facades\Builders\SeederBuilder;
 use Tkusa\Lawn\Facades\Builders\RouteBuilder;
 use Tkusa\Lawn\Facades\Builders\ViewBuilder;
+use Tkusa\Lawn\Facades\Builders\UnitTestBuilder;
+use Tkusa\Lawn\Facades\Builders\FeatureTestBuilder;
 
 class BuildCommand extends Command
 {
@@ -53,8 +56,11 @@ class BuildCommand extends Command
         // $res = ModelBuilder::build($name);
         // $res = MigrationBuilder::build($name);
         // $res = FactoryBuilder::build($name);
-        //$res = RouteBuilder::build($name);
-        $res = ViewBuilder::build($name);
+        // $res = SeederBuilder::build($name);
+        // $res = RouteBuilder::build($name);
+        // $res = ViewBuilder::build($name);
+        $res = UnitTestBuilder::build($name);
+        $res = FeatureTestBuilder::build($name);
 
 
         return Command::SUCCESS;
