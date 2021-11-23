@@ -6,38 +6,38 @@ use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Migration\MigrationComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
+use Carbon\Carbon;
 
-class MigrationBuilder
+class MigrationBuilder extends Builder
 {
 
     /**
-     * Build a migration file
+     * Get a template
      */
-    public function build($name)
+    public function template($name)
     {
-
-        //capitalized
-        $Name = ucfirst($name);
-        //plural
-        $names = Str::plural($name);
-        //capitalized plural
-        $Names = Str::plural($Name);
-
+        $dict = Parser::dict($name);
         $base = MigrationComponent::base();
         $columns = $this->columns($name);
 
         //replace placeholders
-        $base = str_replace('%column%', $columns, $base);
-        $base = str_replace('%Names%', $Names, $base);
-        $base = str_replace('%names%', $names, $base);
+        $template = str_replace('%column%', $columns, $base);
+        $template = str_replace('%Names%', $dict['studlies'], $template);
+        $template = str_replace('%names%', $dict['snakes'], $template);
 
-        //path for the file creating
-        $path = package_path(Config::MIGRATION_PATH . 'create_'.$names .'_table.php');
-        //write a file
-        $res = file_put_contents($path, $base);
+        return $template;
 
-        return $res;
+    }
 
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $now = date_format(new Carbon, 'Y_m_d_His');
+        $path = package_path(Config::MIGRATION_PATH . $now .'_create_'.$dict['snakes'] .'_table.php');
+        return $path;
     }
 
     /**

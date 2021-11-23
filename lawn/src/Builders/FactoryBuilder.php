@@ -2,37 +2,40 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Factory\FactoryComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class FactoryBuilder
+class FactoryBuilder extends Builder
 {
 
     /**
-     * Build a migration file
+     * Get a template
      */
-    public function build($name)
+    public function template($name)
     {
-
-        //capitalized
-        $Name = ucfirst($name);
-
+        $dict = Parser::dict($name);
         $base = FactoryComponent::base();
         $columns = $this->columns($name);
 
         //replace placeholders
-        $base = str_replace('%column%', $columns, $base);
-        $base = str_replace('%Name%', $Name, $base);
+        $template = str_replace('%column%', $columns, $base);
+        $template = str_replace('%Name%', $dict['studly'], $template);
 
-        //path for the file creating
-        $path = package_path(Config::FACTORY_PATH. $Name .'Factory.php');
-        //write a file
-        $res = file_put_contents($path, $base);
+        return $template;
 
-        return $res;
+    }
 
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $path = package_path(Config::FACTORY_PATH. $dict['studly'] .'Factory.php');
+        return $path;
     }
 
     /**

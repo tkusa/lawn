@@ -30,14 +30,17 @@ class RequestComponent
         return $base;
     }
 
+    /**
+     * Get validation for string
+     */
     public static function string($def)
     {
         $name = $def['name'];
         $str = '"'. $name . '" => ["string", ';
-        if (isset($def['nullable']) && !$def['nullable']) {
-            $str .= '"required", ';
-        } else {
+        if (isset($def['nullable']) && $def['nullable']) {
             $str .= '"nullable", ';
+        } else {
+            $str .= '"required", ';
         }
         if (isset($def['length'])) {
             $str .= '"max:'. $def['length'] .'", ';

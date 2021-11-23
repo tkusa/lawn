@@ -2,12 +2,13 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Route\RouteComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class RouteBuilder
+class RouteBuilder extends Builder
 {
 
     /**
@@ -18,25 +19,47 @@ class RouteBuilder
         //name dict
         $dict = Parser::dict($name);
         $base = RouteComponent::base();
-
         ////replace placeholders
-        $route = $this->routes($name);
-        $route = str_replace('%name%', $dict['kebab'], $route);
-        $route = str_replace('%Name%', $dict['studly'], $route);
-
-        $base = str_replace('%route%', $route, $base);
-
+        $template = $this->template($name);
+        $base = str_replace('%route%', $template, $base);
         //path for the file creating
-        $path = package_path(Config::ROUTE_PATH.'lawn.php');
+        $path = $this->path($name);
 
         //write a file
         if (file_exists($path)) {
-            $res = file_put_contents($path, $route, FILE_APPEND);
+            $res = file_put_contents($path, $template, FILE_APPEND);
         } else {
             $res = file_put_contents($path, $base);
         }
         return $res;
     }
+
+    /**
+     * Get replaced template
+     */
+    public function template($name)
+    {
+        //name dict
+        $dict = Parser::dict($name);
+
+        //replace placeholders
+        $route = $this->routes($name);
+        $template = str_replace('%name%', $dict['kebab'], $route);
+        $template = str_replace('%Name%', $dict['studly'], $template);
+
+        return $template;
+    }
+
+    /**
+     * Get a path for file
+     */
+    public function path($name)
+    {
+        //path for the file creating
+        $path = package_path(Config::ROUTE_PATH.'lawn.php');
+        return $path;
+    }
+
 
     /**
      * Get a string of routes

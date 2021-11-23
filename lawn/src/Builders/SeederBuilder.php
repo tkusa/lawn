@@ -2,28 +2,14 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Seeder\SeederComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class SeederBuilder
+class SeederBuilder extends Builder
 {
-
-    /**
-     * Build a controller file
-     */
-    public function build($name)
-    {
-        $template = $this->template($name);
-
-        $path = $this->path($name);
-        //write in a file
-        $res = file_put_contents($path, $template);
-
-        return $res;
-    }
-
     /**
      * Get replaced template
      */
@@ -31,15 +17,14 @@ class SeederBuilder
     {
         //name dict
         $dict = Parser::dict($name);
-
         $base = SeederComponent::base();
         $run = $this->runs();
 
         //replace placeholders
-        $base = str_replace('%run%', $run, $base);
-        $base = str_replace('%Name%', $dict['studly'], $base);
+        $template = str_replace('%run%', $run, $base);
+        $template = str_replace('%Name%', $dict['studly'], $template);
 
-        return $base;
+        return $template;
     }
 
     /**

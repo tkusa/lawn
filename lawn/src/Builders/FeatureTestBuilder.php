@@ -2,37 +2,41 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Test\Feature\FeatureTestComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class FeatureTestBuilder
+class FeatureTestBuilder extends Builder
 {
 
     /**
-     * Build view files
+     * Get a template
      */
-    public function build($name)
+    public function template($name)
     {
-        //name dict
         $dict = Parser::dict($name);
 
         $base = FeatureTestComponent::base();
-
         $test = $this->tests($name);
-
         //replace placeholders
         $template = str_replace('%test%', $test, $base);
         $template = str_replace('%Name%', $dict['studly'], $template);
         $template = str_replace('%name%', $dict['kebab'], $template);
 
-        //path for the file creating
-        $path = package_path(Config::FEATURE_TEST_PATH . $dict['studly'] .'ControllerTest.php');
-        //write a file
-        $res = file_put_contents($path, $template);
+        return $template;
 
-        return $res;
+    }
+
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $path = package_path(Config::FEATURE_TEST_PATH . $dict['studly'] .'ControllerTest.php');
+        return $path;
     }
 
     /**

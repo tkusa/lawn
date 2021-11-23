@@ -2,39 +2,40 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Model\ModelComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class ModelBuilder
+class ModelBuilder extends Builder
 {
 
     /**
-     * Build a model file
+     * Get a template
      */
-    public function build($name)
+    public function template($name)
     {
-
-        //capitalized
-        $Name = ucfirst($name);
-        //plural
-        $names = Str::plural($name);
-
+        $dict = Parser::dict($name);
         $base = ModelComponent::base();
         $fillable = $this->columns($name);
 
         //replace placeholders
-        $base = str_replace('%fillable%', $fillable, $base);
-        $base = str_replace('%Name%', $Name, $base);
+        $template = str_replace('%fillable%', $fillable, $base);
+        $template = str_replace('%Name%', $dict['studly'], $template);
 
-        //path for the file creating
-        $path = package_path(Config::MODEL_PATH . $Name .'.php');
-        //write a file
-        $res = file_put_contents($path, $base);
+        return $template;
 
-        return $res;
+    }
 
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $path = package_path(Config::MODEL_PATH . $dict['studly'] .'.php');
+        return $path;
     }
 
     /**

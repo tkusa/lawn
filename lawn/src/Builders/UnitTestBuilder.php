@@ -2,22 +2,22 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Test\Unit\UnitTestComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class UnitTestBuilder
+class UnitTestBuilder extends Builder
 {
 
     /**
-     * Build view files
+     * Get replaced template
      */
-    public function build($name)
+    public function template($name)
     {
         //name dict
         $dict = Parser::dict($name);
-
         $base = UnitTestComponent::base();
 
         $test = $this->tests($name);
@@ -26,12 +26,20 @@ class UnitTestBuilder
         $template = str_replace('%test%', $test, $base);
         $template = str_replace('%Name%', $dict['studly'], $template);
 
+        return $template;
+    }
+
+    /**
+     * Get a path for file
+     */
+    public function path($name)
+    {
+        //name dict
+        $dict = Parser::dict($name);
         //path for the file creating
         $path = package_path(Config::UNIT_TEST_PATH . $dict['studly'] .'Test.php');
-        //write a file
-        $res = file_put_contents($path, $template);
 
-        return $res;
+        return $path;
     }
 
     /**

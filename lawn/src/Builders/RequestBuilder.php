@@ -2,12 +2,13 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Request\RequestComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class RequestBuilder
+class RequestBuilder extends Builder
 {
 
     /**
@@ -32,6 +33,32 @@ class RequestBuilder
 
         return $res;
 
+    }
+
+    /**
+     * Get a template
+     */
+    public function template($name)
+    {
+        $dict = Parser::dict($name);
+        $base = RequestComponent::base();
+        $columns = $this->columns($name);
+
+        //replace placeholders
+        $template = str_replace('%column%', $columns, $base);
+        $template = str_replace('%Name%', $dict['studly'], $template);
+
+        return $template;
+    }
+
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $path = package_path(Config::REQUEST_PATH . $dict['studly'] .'Request.php');
+        return $path;
     }
 
     /**

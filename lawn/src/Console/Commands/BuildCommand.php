@@ -96,6 +96,10 @@ class BuildCommand extends Command
         $this->build_dir(Config::VIEW_PATH);
         $this->build_dir(Config::UNIT_TEST_PATH);
         $this->build_dir(Config::FEATURE_TEST_PATH);
+        $entities = Parser::entities();
+        foreach ($entities as $entity) {
+            $this->build_dir(Config::VIEW_PATH.$entity);
+        }
 
     }
 

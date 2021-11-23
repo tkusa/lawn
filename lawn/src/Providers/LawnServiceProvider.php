@@ -64,6 +64,9 @@ class LawnServiceProvider extends ServiceProvider
             __DIR__.'/../'.Config::VIEW_PATH => resource_path('views/lawn'),
             //test
             __DIR__.'/../'.Config::TEST_PATH => base_path('tests/lawn'),
+
+            //resources
+            __DIR__.'/../'.Config::RESOURCE_VIEW_PATH => base_path('views/lawn'),
         ], 'lawn-build');
     }
 

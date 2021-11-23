@@ -2,12 +2,13 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\View\ViewComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class ViewBuilder
+class ViewBuilder extends Builder
 {
 
     /**
@@ -29,7 +30,7 @@ class ViewBuilder
             $template = str_replace('%name%', $dict['snake'], $template);
 
             //path for the file creating
-            $path = package_path(Config::VIEW_PATH .$dict['snake']. $resource .'.blade.php');
+            $path = package_path(Config::VIEW_PATH .$dict['snake'] .'/'. $resource .'.blade.php');
             //write a file
             $res = file_put_contents($path, $template);
         }

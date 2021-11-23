@@ -2,41 +2,43 @@
 
 namespace Tkusa\Lawn\Builders;
 
+use Tkusa\Lawn\Builders\Builder;
 use Tkusa\Lawn\Config\Config;
 use Tkusa\Lawn\Components\Controller\ControllerComponent;
 use Illuminate\Support\Str;
 use Tkusa\Lawn\Parser;
 
-class ControllerBuilder
+class ControllerBuilder extends Builder
 {
 
     /**
-     * Build a controller file
+     * Get a template
      */
-    public function build($name)
+    public function template($name)
     {
-        //capitalized
-        $Name = ucfirst($name);
-        //plural
-        $names = Str::plural($name);
-
+        $dict = Parser::dict($name);
         $base = ControllerComponent::base();
         $use = $this->uses();
         $func = $this->functions($name);
 
         //replace placeholders
-        $base = str_replace('%use%', $use, $base);
-        $base = str_replace('%function%', $func, $base);
-        $base = str_replace('%names%', $names, $base);
-        $base = str_replace('%name%', $name, $base);
-        $base = str_replace('%Name%', $Name, $base);
+        $template = str_replace('%use%', $use, $base);
+        $template = str_replace('%function%', $func, $template);
+        $template = str_replace('%names%', $dict['snakes'], $template);
+        $template = str_replace('%name%', $dict['snake'], $template);
+        $template = str_replace('%Name%', $dict['studly'], $template);
 
-        //path for the file creating
-        $path = package_path(Config::CONTROLLER_PATH . $Name .'Controller.php');
-        //write a file
-        $res = file_put_contents($path, $base);
+        return $template;
+    }
 
-        return $res;
+    /**
+     * Get a path
+     */
+    public function path($name)
+    {
+        $dict = Parser::dict($name);
+        $path = package_path(Config::CONTROLLER_PATH . $dict['studly'] .'Controller.php');
+        return $path;
     }
 
     /**
