@@ -21,5 +21,7 @@ class Config
     const MODEL_PATH = 'Build/Models/';
     const MIGRATION_PATH = 'Build/database/migrations/';
     const FACTORY_PATH = 'Build/database/factories/';
+    const ROUTE_PATH = 'Build/routes/lawn.php';
+    const VIEW_PATH = 'Build/resources/views/lawn/';
 
 }

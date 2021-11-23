@@ -57,6 +57,7 @@ class Parser
         $dict['snakes'] = Str::plural($snake);
         $dict['studly'] = $studly;
         $dict['studlies'] = Str::pluralStudly($snake);
+        $dict['kebab'] = Str::kebab($name);
 
         return $dict;
     }

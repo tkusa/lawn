@@ -38,7 +38,7 @@ return [
             ],
         ],
 
-        'resources' => [
+        'resource' => [
             'index',
             'create',
             'store',

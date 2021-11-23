@@ -1,0 +1,4 @@
+@extends('lawn.common.base')
+@section('main')
+%view%
+@endsection
