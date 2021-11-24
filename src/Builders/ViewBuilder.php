@@ -28,6 +28,8 @@ class ViewBuilder extends Builder
             $template = str_replace('%view%', $view, $base);
             $template = str_replace('%names%', $dict['snakes'], $template);
             $template = str_replace('%name%', $dict['snake'], $template);
+            $template = str_replace('%Names%', $dict['studlies'], $template);
+            $template = str_replace('%Name%', $dict['studly'], $template);
 
             //path for the file creating
             $path = package_path(Config::VIEW_PATH .$dict['snake'] .'/'. $resource .'.blade.php');
@@ -47,7 +49,7 @@ class ViewBuilder extends Builder
         $resources = Parser::resource($name);
         $views = [];
         foreach ($resources as $resource) {
-            $view = ViewComponent::call($resource);
+            $view = ViewComponent::call($resource, $name);
             if ($view) {
                 $views[$resource] = $view;
             }
@@ -56,6 +58,5 @@ class ViewBuilder extends Builder
         return $views;
 
     }
-
 
 }

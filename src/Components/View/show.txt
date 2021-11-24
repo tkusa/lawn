@@ -1,1 +1,10 @@
-<h2>Show</h2>
+<section class="lawn_title">
+    <h2>Info of %Name%</h2>
+</section>
+<section class="lawn_show">
+    <div class="lawn_info">
+        <dl>
+            %info%
+        </dl>
+    </div>
+</section>

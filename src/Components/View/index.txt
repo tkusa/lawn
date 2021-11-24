@@ -1,1 +1,24 @@
-<h2>Index</h2>
+<section class="lawn_title">
+    <h2>Index of %Names%</h2>
+</section>
+<section class="lawn_index">
+    <div class="lawn_table">
+        <table>
+            <thead>
+                <tr>
+                    %head%
+                </tr>
+            </thead>
+            <tbody>
+                @foreach
+                    <tr>
+                        %body%
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="lawn_paginate">
+            {{ $%names%->links() }}
+        </div>
+    </div>
+</section>

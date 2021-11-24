@@ -29,6 +29,7 @@ class Config
     const FEATURE_TEST_PATH = 'Build/tests/Feature/';
 
     const RESOURCE_VIEW_PATH = 'Resources/Views/';
+    const RESOURCE_IMG_PATH = 'Resources/Imgs/';
 
     const SEEDER_COUNT = 10;
 

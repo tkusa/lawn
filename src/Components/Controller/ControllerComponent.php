@@ -49,7 +49,7 @@ class ControllerComponent
         $func = '
         public function index(Request $request)
         {
-            $%names% = %Name%::get();
+            $%names% = %Name%::all()->paginate();
             return view("lawn.%name%.index",compact($%names%));
         }
         ';

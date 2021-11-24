@@ -40,6 +40,10 @@ class Parser
         if (empty($columns)) {
             return [];
         }
+        foreach ($columns as $key => $column) {
+            $column['label'] = isset($column['label']) ? $column['label']: $column['name'];
+            $columns[$key] = $column;
+        }
         return $columns;
     }
 

@@ -50,23 +50,79 @@ class BuildCommand extends Command
      */
     public function handle()
     {
+        $this->line('Initializing...');
         $this->init();
+        $this->comment('Done');
+
+        $this->line('Begin to build...');
 
         $entities = Parser::entities();
-
         foreach ($entities as $name) {
+            $this->comment('Building for ' .$name);
             $res = ControllerBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Controller');
+            } else {
+                $this->error('Failed to build a Controller');
+            }
             $res = RequestBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Request');
+            } else {
+                $this->error('Failed to build a Request');
+            }
             $res = ModelBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Model');
+            } else {
+                $this->error('Failed to build a Model');
+            }
             $res = MigrationBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Migration');
+            } else {
+                $this->error('Failed to build a Migration');
+            }
             $res = FactoryBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Factory');
+            } else {
+                $this->error('Failed to build a Factory');
+            }
             $res = SeederBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a Seeder');
+            } else {
+                $this->error('Failed to build a Seeder');
+            }
             $res = RouteBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build Routes');
+            } else {
+                $this->error('Failed to build Routes');
+            }
             $res = ViewBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build Views');
+            } else {
+                $this->error('Failed to build Views');
+            }
             $res = UnitTestBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build a UnitTest');
+            } else {
+                $this->error('Failed to build a UnitTest');
+            }
             $res = FeatureTestBuilder::build($name);
+            if ($res) {
+                $this->info('Finished to build FeatureTest');
+            } else {
+                $this->error('Failed to build FeatureTest');
+            }
         }
-
+        $this->info('Build finished.');
+        $this->comment('Now your Lawn is ready.');
+        $this->comment('Run `php artisan vender:publish --tag="lawn-build"`');
         return Command::SUCCESS;
     }
 

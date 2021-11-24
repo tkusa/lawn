@@ -1,1 +1,11 @@
-<h2>Edit</h2>
+<section class="lawn_title">
+    <h2>Edit %Name%</h2>
+</section>
+<section class="lawn_form">
+    <form method="post" action="{{ route('%name%.update') }}">
+        @csrf
+        @method('put')
+        %form%
+        <button type="submit" class="lawn_btn">Submit</button>
+    </form>
+</section>
