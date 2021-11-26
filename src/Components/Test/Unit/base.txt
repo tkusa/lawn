@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use Tkusa\Lawn\Models\%Name%;
 
 class %Name%Test extends TestCase
 {

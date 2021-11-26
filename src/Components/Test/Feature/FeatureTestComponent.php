@@ -3,8 +3,9 @@
 namespace Tkusa\Lawn\Components\Test\Feature;
 
 use Tkusa\Lawn\Config\Config;
+use Tkusa\Lawn\Components\Component;
 
-class FeatureTestComponent
+class FeatureTestComponent extends Component
 {
 
     /**
@@ -47,14 +48,7 @@ class FeatureTestComponent
      */
     public static function index()
     {
-        $test = '
-        public function test_index()
-        {
-            $response = $this->get("/%name%");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_INDEX');
         return $test;
     }
 
@@ -63,14 +57,7 @@ class FeatureTestComponent
      */
     public static function create()
     {
-        $test = '
-        public function test_create()
-        {
-            $response = $this->get("/%name%/create");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = $test = self::get('TEST_FEATURE_CREATE');
         return $test;
     }
 
@@ -79,14 +66,7 @@ class FeatureTestComponent
      */
     public static function store()
     {
-        $test = '
-        public function test_store()
-        {
-            $response = $this->post("/%name%");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_STORE');
         return $test;
     }
 
@@ -95,14 +75,7 @@ class FeatureTestComponent
      */
     public static function show()
     {
-        $test = '
-        public function test_show()
-        {
-            $response = $this->get("/%name%/1");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_SHOW');
         return $test;
     }
 
@@ -111,14 +84,7 @@ class FeatureTestComponent
      */
     public static function edit()
     {
-        $test = '
-        public function test_edit()
-        {
-            $response = $this->get("/%name%/1/edit");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_EDIT');
         return $test;
     }
 
@@ -127,14 +93,7 @@ class FeatureTestComponent
      */
     public static function update()
     {
-        $test = '
-        public function test_update()
-        {
-            $response = $this->put("/%name%/1");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_UPDATE');
         return $test;
     }
 
@@ -143,14 +102,7 @@ class FeatureTestComponent
      */
     public static function destroy()
     {
-        $test = '
-        public function test_destroy()
-        {
-            $response = $this->delete("/%name%/1");
-
-            $response->assertStatus(200);
-        }
-        ';
+        $test = self::get('TEST_FEATURE_DESTROY');
         return $test;
     }
 

@@ -24,6 +24,7 @@ class UnitTestBuilder extends Builder
 
         //replace placeholders
         $template = str_replace('%test%', $test, $base);
+        $template = str_replace('%name%', $dict['snake'], $template);
         $template = str_replace('%Name%', $dict['studly'], $template);
 
         return $template;

@@ -1,9 +1,9 @@
 <p align="center"><a href="" target="_blank"><img src="https://user-images.githubusercontent.com/94616880/143237092-17915166-5c4a-48f0-9873-76fca1db373c.png" width="400"></a></p>
 
 <p align="center">
-<!-- <a href=""><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a> -->
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<!-- <a href=""><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a> -->
+<a href="https://packagist.org/packages/tkusa/lawn"><img src="https://packagist.org/packages/tkusa/lawn" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/tkusa/lawn"><img src="https://packagist.org/packages/tkusa/lawn" alt="License"></a>
 </p>
 
 ## Lawn is a Ground Cover
@@ -26,7 +26,7 @@ You can generate base classes by defining entities in config file:
 1. Require this package in your project
 
 2. Edit config file  
-``` php artisan vendor:publish --tag=lawn-config```   
+``` php artisan vendor:publish --tag="lawn-config"```   
 Now you have "lawn.php" at config dir.  
 Define entities here.  
 
@@ -34,7 +34,7 @@ Define entities here.
 ``` php artisan lawn:build ```  
 
 4. Publish generated files   
-``` php artisan vendor:publish --tag=lawn-build```  
+``` php artisan vendor:publish --tag="lawn-build"```  
 You can find generated files in your project.  
 
 
@@ -50,4 +50,5 @@ Lawn is open-sourced software licensed under the [MIT license](https://opensourc
 - Check views
 - Improve designs
 - Register routes
+- Relationship
 

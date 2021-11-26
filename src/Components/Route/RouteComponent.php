@@ -2,8 +2,9 @@
 
 namespace Tkusa\Lawn\Components\Route;
 
+use Tkusa\Lawn\Components\Component;
 
-class RouteComponent
+class RouteComponent extends Component
 {
 
     /**
@@ -43,57 +44,43 @@ class RouteComponent
 
     public static function index()
     {
-        $str = '
-        Route::get("/%name%", "%Name%Controller@index")->name("%name%.index");
-        ';
+        $str = self::get('ROUTE_INDEX');
         return $str;
     }
 
     public static function create()
     {
-        $str = '
-        Route::get("/%name%/create", "%Name%Controller@create")->name("%name%.create");
-        ';
+        $str = self::get('ROUTE_CREATE');
         return $str;
     }
 
     public static function store()
     {
-        $str = '
-        Route::post("/%name%", "%Name%Controller@store")->name("%name%.store");
-        ';
+        $str = self::get('ROUTE_STORE');
         return $str;
     }
 
     public static function show()
     {
-        $str = '
-        Route::get("/%name%", "%Name%Controller@index")->name("%name%.index");
-        ';
+        $str = self::get('ROUTE_SHOW');
         return $str;
     }
 
     public static function edit()
     {
-        $str = '
-        Route::get("/%name%/edit", "%Name%Controller@edit")->name("%name%.edit");
-        ';
+        $str = self::get('ROUTE_EDIT');
         return $str;
     }
 
     public static function update()
     {
-        $str = '
-        Route::put("/%name%", "%Name%Controller@update")->name("%name%.update");
-        ';
+        $str = self::get('ROUTE_UPDATE');
         return $str;
     }
 
     public static function destroy()
     {
-        $str = '
-        Route::delete("/%name%", "%Name%Controller@destroy")->name("%name%.destroy");
-        ';
+        $str = self::get('ROUTE_DESTROY');
         return $str;
     }
 

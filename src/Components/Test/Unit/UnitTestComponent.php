@@ -3,8 +3,9 @@
 namespace Tkusa\Lawn\Components\Test\Unit;
 
 use Tkusa\Lawn\Config\Config;
+use Tkusa\Lawn\Components\Component;
 
-class UnitTestComponent
+class UnitTestComponent extends Component
 {
 
     /**
@@ -16,7 +17,7 @@ class UnitTestComponent
             case 'store':
                 return self::insert();
             case 'show':
-                return self::get();
+                return self::select();
             case 'update':
                 return self::update();
             case 'destroy':
@@ -41,26 +42,16 @@ class UnitTestComponent
      */
     public static function insert()
     {
-        $test = '
-        public function test_insert()
-        {
-            $this->assertTrue(true);
-        }
-        ';
+        $test = self::get('TEST_UNIT_INSERT');
         return $test;
     }
 
     /**
      * Get get test string
      */
-    public static function get()
+    public static function select()
     {
-        $test = '
-        public function test_get()
-        {
-            $this->assertTrue(true);
-        }
-        ';
+        $test = self::get('TEST_UNIT_SELECT');
         return $test;
     }
 
@@ -69,12 +60,7 @@ class UnitTestComponent
      */
     public static function update()
     {
-        $test = '
-        public function test_update()
-        {
-            $this->assertTrue(true);
-        }
-        ';
+        $test = self::get('TEST_UNIT_UPDATE');
         return $test;
     }
 
@@ -83,12 +69,7 @@ class UnitTestComponent
      */
     public static function delete()
     {
-        $test = '
-        public function test_delete()
-        {
-            $this->assertTrue(true);
-        }
-        ';
+        $test = self::get('TEST_UNIT_DELETE');
         return $test;
     }
 

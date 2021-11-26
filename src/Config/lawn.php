@@ -21,7 +21,7 @@ return [
     |--------------------------------------------------------------------------
     | Definitions for each entities
     |--------------------------------------------------------------------------
-    | column : name, type, label, nullable, length(string), unsigned(integer)
+    | column : name, type, label, nullable, default, length(string), unsigned(integer)
     | resources : index, create, store, show, edit, update, destroy
     */
     'post' => [
@@ -32,6 +32,7 @@ return [
                 'label' => 'Title', // label to show
                 'length' => '255', // length of field
                 'nullable' => false, // field is nullable or not
+                'default' => 'Title',
             ],
             'contents' => [
                 'name' => 'contents',

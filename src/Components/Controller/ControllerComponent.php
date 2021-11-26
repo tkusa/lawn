@@ -2,8 +2,9 @@
 
 namespace Tkusa\Lawn\Components\Controller;
 
+use Tkusa\Lawn\Components\Component;
 
-class ControllerComponent
+class ControllerComponent extends Component
 {
 
     /**
@@ -46,13 +47,7 @@ class ControllerComponent
      */
     public static function index()
     {
-        $func = '
-        public function index(Request $request)
-        {
-            $%names% = %Name%::all()->paginate();
-            return view("lawn.%name%.index",compact($%names%));
-        }
-        ';
+        $func = self::get('CONTROLLER_INDEX');
         return $func;
     }
 
@@ -62,12 +57,7 @@ class ControllerComponent
      */
     public static function create()
     {
-        $func = '
-        public function create(Request $request)
-        {
-            return view("lawn.%name%.create");
-        }
-        ';
+        $func = self::get('CONTROLLER_CREATE');
         return $func;
     }
 
@@ -76,18 +66,7 @@ class ControllerComponent
      */
     public static function store()
     {
-        $func = '
-        public function store(%Name%Request $request)
-        {
-            $form = $request->all();
-            unset($form["_token"]);
-
-            $%name% = new %Name%;
-            $%name%->fill($form)->save();
-
-            return redirect()->route("lawn.%name%.index");
-        }
-        ';
+        $func = self::get('CONTROLLER_STORE');
         return $func;
     }
 
@@ -96,13 +75,7 @@ class ControllerComponent
      */
     public static function show()
     {
-        $func = '
-        public function show(Request $request, $id)
-        {
-            $%name% = %Name%::find($id);
-            return view("lawn.%name%.show",compact($%name%));
-        }
-        ';
+        $func = self::get('CONTROLLER_SHOW');
         return $func;
     }
 
@@ -111,13 +84,7 @@ class ControllerComponent
      */
     public static function edit()
     {
-        $func = '
-        public function edit(Request $request, $id)
-        {
-            $%name% = %Name%::find($id);
-            return view("lawn.%name%.edit",compact($%name%));
-        }
-        ';
+        $func = self::get('CONTROLLER_EDIT');
         return $func;
     }
 
@@ -126,18 +93,7 @@ class ControllerComponent
      */
     public static function update()
     {
-        $func = '
-        public function update(%Name%Request $request, $id)
-        {
-            $%name% = %Name%::find($id);
-
-            $form = $request->all();
-            unset($form["_token"]);
-
-            $%name%->fill($form)->save();
-            return redirect()->route("lawn.%name%.show",compact($id));
-        }
-        ';
+        $func = self::get('CONTROLLER_UPDATE');
         return $func;
     }
 
@@ -146,13 +102,7 @@ class ControllerComponent
      */
     public static function destroy()
     {
-        $func = '
-        public function destroy(Request $request, $id)
-        {
-            $%name% = %Name%::find($id);
-            return redirect()->route("lawn.%name%.index");
-        }
-        ';
+        $func = self::get('CONTROLLER_DESTROY');
         return $func;
     }
 }
