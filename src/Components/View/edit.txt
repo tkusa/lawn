@@ -2,7 +2,7 @@
     <h2>Edit %Name%</h2>
 </section>
 <section class="lawn_form">
-    <form method="post" action="{{ route('%name%.update') }}">
+    <form method="post" action="{{ route('lawn.%name%.update', ['id' => $%name%->id]) }}">
         @csrf
         @method('put')
         %form%

@@ -2,7 +2,7 @@
     <h2>Create %Name%</h2>
 </section>
 <section class="lawn_form">
-    <form method="post" action="{{ route('%name%.store') }}">
+    <form method="post" action="{{ route('lawn.%name%.store') }}">
         @csrf
         %form%
         <button type="submit" class="lawn_btn">Submit</button>

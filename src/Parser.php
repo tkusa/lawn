@@ -13,10 +13,29 @@ class Parser
     public static function entities()
     {
         $entities = config('lawn.entity');
-        if (empty($entities)) {
-            return null;
+
+        $res = [];
+        foreach ($entities as $entity) {
+            $res[] = self::dict($entity)['snake'];
+
         }
         return $entities;
+    }
+
+    /**
+     * Get entities which has index page
+     */
+    public static function entities_with_index()
+    {
+        $entities = self::entities();
+        $res = [];
+        foreach ($entities as $entity) {
+            $resources = self::resource($entity);
+            if (in_array('index', $resources)) {
+                $res[] = $entity;
+            }
+        }
+        return $res;
     }
 
     /**

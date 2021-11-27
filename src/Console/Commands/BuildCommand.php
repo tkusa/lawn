@@ -135,6 +135,7 @@ class BuildCommand extends Command
         rmrf($build_path);
         mkdir($build_path, 0777);
         $this->prepare($build_path);
+        $this->copy();
     }
 
     /**
@@ -157,6 +158,15 @@ class BuildCommand extends Command
             $this->build_dir(Config::VIEW_PATH.$entity);
         }
 
+    }
+
+    /**
+     * Copy required resourses
+     */
+    public function copy()
+    {
+        File::copyDirectory(package_path(Config::RESOURCE_VIEW_PATH), package_path(Config::VIEW_PATH));
+        File::copyDirectory(package_path(Config::RESOURCE_CONTROLLER_PATH), package_path(Config::CONTROLLER_PATH));
     }
 
     public function build_dir($path)

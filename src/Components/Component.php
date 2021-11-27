@@ -15,8 +15,8 @@ class Component
     const CONTROLLER_INDEX = '
     public function index(Request $request)
     {
-        $%names% = %Name%::all()->paginate();
-        return view("lawn.%name%.index",compact($%names%));
+        $%names% = %Name%::paginate();
+        return view("lawn.%name%.index",compact("%names%"));
     }
     ';
 
@@ -44,7 +44,7 @@ class Component
     public function show(Request $request, $id)
     {
         $%name% = %Name%::find($id);
-        return view("lawn.%name%.show",compact($%name%));
+        return view("lawn.%name%.show",compact("%name%"));
     }
     ';
 
@@ -52,7 +52,7 @@ class Component
     public function edit(Request $request, $id)
     {
         $%name% = %Name%::find($id);
-        return view("lawn.%name%.edit",compact($%name%));
+        return view("lawn.%name%.edit",compact("%name%"));
     }
     ';
 
@@ -65,7 +65,7 @@ class Component
         unset($form["_token"]);
 
         $%name%->fill($form)->save();
-        return redirect()->route("lawn.%name%.show",compact($id));
+        return redirect()->route("lawn.%name%.show",compact("id"));
     }
     ';
 
@@ -92,19 +92,19 @@ class Component
     ';
 
     const ROUTE_SHOW = '
-    Route::get("/%name%", "%Name%Controller@index")->name("%name%.index");
+    Route::get("/%name%/{id}", "%Name%Controller@show")->name("%name%.show");
     ';
 
     const ROUTE_EDIT = '
-    Route::get("/%name%/edit", "%Name%Controller@edit")->name("%name%.edit");
+    Route::get("/%name%/{id}/edit", "%Name%Controller@edit")->name("%name%.edit");
     ';
 
     const ROUTE_UPDATE = '
-    Route::put("/%name%", "%Name%Controller@update")->name("%name%.update");
+    Route::put("/%name%/{id}", "%Name%Controller@update")->name("%name%.update");
     ';
 
     const ROUTE_DESTROY = '
-    Route::delete("/%name%", "%Name%Controller@destroy")->name("%name%.destroy");
+    Route::delete("/%name%/{id}", "%Name%Controller@destroy")->name("%name%.destroy");
     ';
 
 

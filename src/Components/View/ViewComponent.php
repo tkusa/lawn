@@ -158,6 +158,8 @@ class ViewComponent
         $type = Parser::type($column['type']);
         switch ($type) {
             case Config::PARSE_DATETIME:
+                $type = 'datetime';
+                break;
             case Config::PARSE_TIMESTAMP:
                 $type = 'datetime';
                 break;

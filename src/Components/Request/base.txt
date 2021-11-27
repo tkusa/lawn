@@ -1,6 +1,6 @@
 <?php
 
-namespace Tkusa\Lawn\Http\Requests;
+namespace App\Http\Requests\Lawn;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;

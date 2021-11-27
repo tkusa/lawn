@@ -2,13 +2,192 @@
 /*  lawn.css
 ---------------------------------------------- */
 
-.lawn_title {
+.lawn body {
+    font-family: "Helvetica Neue",
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        Meiryo,
+        sans-serif;
+    color: #333;
+}
+.lawn html,
+.lawn body,
+.lawn select,
+.lawn option,
+.lawn optgroup {
+	overflow-wrap: break-word;
+	word-wrap: break-word; /* IE edge */
+}
+.lawn table {
+	border-collapse:collapse;
+	border-spacing:0;
+	empty-cells:show;
+}
+.lawn table caption{
+	margin-bottom: 8px;
+	text-align:left;
+	font-weight: bold;
+}
+.lawn table th {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+}
+.lawn table th.empty {
+    width: 100px;
+}
+.lawn table td {
+	text-align:left;
+	vertical-align:top;
+}
+.lawn table td.n {
+	text-align:right;
+}
+.lawn table td.empty {
+    width: 100px;
+}
+.lawn a:link {
+	text-decoration: none;
+	color: #36a7c7;
+}
+.lawn a:visited {
+	text-decoration: none;
+	color: #36a7c7;
+}
+.lawn a:hover{
+	text-decoration: none;
+	color: #36a7c7;
+}
+.lawn img {
+	border: none;
+	vertical-align: middle;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+.lawn p{
+	text-align: justify;
+	text-justify: inter-ideograph;
+}
+.lawn ul {
+	list-style-type:none;
+}
+.lawn address{
+	font-style:normal;
+}
+.lawn h1 {
+	font-size: 3.8rem;
+	font-weight: normal;
+}
+.lawn h2 {
+	font-size: 3.2rem;
+	font-weight: normal;
+}
+.lawn h3 {
+	font-size: 2.8rem;
+	font-weight: normal;
+}
+.lawn h4 {
+	font-size: 2rem;
+	font-weight: normal;
+}
+.lawn h5 {
+	font-size: 1.8rem;
+	font-weight: normal;
+}
 
+.lawn .pc_none {
+    display: none !important;
+}
+
+/*  header
+-------------------- */
+.lawn header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    background: #000b00;
+    border-bottom: 1px solid #000;
+}
+.lawn header img {
+    width: 120px;
+}
+.lawn header button {
+    background: #333;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+}
+.lawn header button a {
+    color: #fff !important;
+}
+/*  footer
+-------------------- */
+.lawn footer {
+    padding: 10px 0;
+    background: #000b00;
+    color: #fff;
+}
+.lawn footer .inner {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+.lawn footer ul {
+    display: flex;
+}
+.lawn footer ul li {
+    margin-right: 25px;
+}
+.lawn footer ul li a {
+    color: #fff !important;
+}
+/*  btn
+-------------------- */
+.lawn .btn_s {
+    width: 200px !important;
+}
+.lawn .btn_vs {
+    width: 100px !important;
+}
+.lawn_inner {
+    width: 960px;
+    margin: 0 auto;
+    font-size: 1.4rem;
+}
+.lawn_title {
+    margin-bottom: 50px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
 }
 .lawn_form {
 
 }
+.lawn_form label {
+    display: block;
+    margin-bottom: 20px;
+}
+.lawn_form input {
+    display: block;
+    margin-top: 5px;
+}
 .lawn_btn {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    background: #c3d825;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    color: #fff;
+    text-align: center;
 
 }
 .lawn_index {
@@ -27,5 +206,17 @@
 
 }
 .lawn_error {
+    color: #ee827c;
+}
 
+
+/*  modile smart phone
+---------------------------------------------- */
+@media only screen and (max-width: 959px) {
+    .lawn .pc_none {
+        display: block !important;
+    }
+	.lawn .sp_none {
+		display: none !important;
+	}
 }

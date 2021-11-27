@@ -28,8 +28,10 @@ class Config
     const UNIT_TEST_PATH = 'Build/tests/Unit/';
     const FEATURE_TEST_PATH = 'Build/tests/Feature/';
 
+    const RESOURCE_CONTROLLER_PATH = 'Resources/Controllers/';
     const RESOURCE_VIEW_PATH = 'Resources/Views/';
     const RESOURCE_IMG_PATH = 'Resources/Imgs/';
+    const RESOURCE_CSS_PATH = 'Resources/Css/';
 
     const SEEDER_COUNT = 10;
 

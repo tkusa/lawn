@@ -34,7 +34,7 @@ class SeederComponent
     public static function run()
     {
         $run = '
-        \Tkusa\Lawn\%Name%::factory(' .Config::SEEDER_COUNT .')->create();
+        \App\Models\Lawn\%Name%::factory(' .Config::SEEDER_COUNT .')->create();
         ';
         return $run;
     }

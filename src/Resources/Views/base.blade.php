@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="lawn">
     <head>
         <meta charset="utf-8">
         <meta name="robots" content="noindex">
@@ -20,13 +20,14 @@
         <meta property="og:locale" content="en_US">
         <!-- /ogp -->
         <!-- stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/lawn/lawn.css') }}">
         @yield('stylesheet')
         <!-- /stylesheet -->
     </head>
     <body>
         @include('lawn.header')
         <main>
-            <div class="inner">
+            <div class="lawm_inner">
                 @include('lawn.flash')
                 @yield('main')
             </div>

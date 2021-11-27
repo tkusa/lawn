@@ -41,6 +41,13 @@ class LawnServiceProvider extends ServiceProvider
             ]);
         }
 
+        if (file_exists(base_path('database/migrations/lawn'))) {
+            $this->loadMigrationsFrom(base_path('database/migrations/lawn'));
+        }
+        if (file_exists(base_path('routes/lawn.php'))) {
+            $this->loadRoutesFrom(base_path('routes/lawn.php'));
+        }
+
         $this->publishes([
             __DIR__.'/../Config/'.Config::CONF_NAME => config_path(Config::CONF_NAME),
         ], 'lawn-config');
@@ -59,15 +66,15 @@ class LawnServiceProvider extends ServiceProvider
             //seeder
             __DIR__.'/../'.Config::SEEDER_PATH => database_path('seeders/lawn'),
             //route
-            __DIR__.'/../'.Config::ROUTE_PATH => base_path('routes/lawn.php'),
+            __DIR__.'/../'.Config::ROUTE_PATH. 'lawn.php' => base_path('routes/lawn.php'),
             //view
             __DIR__.'/../'.Config::VIEW_PATH => resource_path('views/lawn'),
             //test
             __DIR__.'/../'.Config::TEST_PATH => base_path('tests/lawn'),
 
             //resources
-            __DIR__.'/../'.Config::RESOURCE_VIEW_PATH => base_path('views/lawn'),
             __DIR__.'/../'.Config::RESOURCE_IMG_PATH => public_path('img/lawn'),
+            __DIR__.'/../'.Config::RESOURCE_CSS_PATH => public_path('css/lawn'),
         ], 'lawn-build');
     }
 

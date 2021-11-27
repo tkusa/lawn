@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach
+                @foreach ($%names% as $%name%)
                     <tr>
                         %body%
                     </tr>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tkusa\Lawn\Models;
+namespace App\Models\Lawn;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
