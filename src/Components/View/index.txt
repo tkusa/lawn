@@ -1,18 +1,37 @@
 <section class="lawn_title">
     <h2>Index of %Names%</h2>
 </section>
-<section class="lawn_index">
-    <div class="lawn_table">
+<section>
+    @if (\App\Models\Lawn\%Name%::has('create'))
+        <div>
+            <a class="lawn_btn btn_s" href="{{ route('lawn.%name%.create') }}">Create</a>
+        </div>
+    @endif
+    <div>
         <table>
             <thead>
                 <tr>
                     %head%
+                    <th class="empty"></th>
+                    <th class="empty"></th>
+                    <th class="empty"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($%names% as $%name%)
                     <tr>
                         %body%
+                        <td>@if ($%name%->has('show'))<a class="lawn_btn btn_vs" href="{{ route('lawn.%name%.show', ['id' => $%name%->id]) }}">Detail</a>@endif</td>
+                        <td>@if ($%name%->has('edit'))<a class="lawn_btn btn_vs" href="{{ route('lawn.%name%.edit', ['id' => $%name%->id]) }}">Edit</a>@endif</td>
+                        <td>
+                            @if ($%name%->has('destroy'))
+                            <form method="post" action={{ route('lawn.%name%.destroy', ['id' => $%name%->id]) }}>
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="lawn_btn btn_red btn_vs">Delete</button>
+                            </form>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

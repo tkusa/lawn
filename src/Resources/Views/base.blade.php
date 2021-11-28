@@ -27,7 +27,7 @@
     <body>
         @include('lawn.header')
         <main>
-            <div class="lawm_inner">
+            <div class="lawn_inner">
                 @include('lawn.flash')
                 @yield('main')
             </div>

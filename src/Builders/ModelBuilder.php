@@ -23,6 +23,7 @@ class ModelBuilder extends Builder
         //replace placeholders
         $template = str_replace('%fillable%', $fillable, $base);
         $template = str_replace('%Name%', $dict['studly'], $template);
+        $template = str_replace('%name%', $dict['snake'], $template);
 
         return $template;
 

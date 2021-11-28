@@ -233,8 +233,10 @@ class ViewComponent
     {
         $name = $column['name'];
         $info = '
-            <dt>'.$name.'</dt>
-            <dd>{{ $%name%->'.$name.' }}</dd>
+            <dl>
+                <dt>'.$name.'</dt>
+                <dd>{{ $%name%->'.$name.' }}</dd>
+            </dl>
         ';
         return $info;
     }

@@ -11,6 +11,16 @@
         sans-serif;
     color: #333;
 }
+.lawn main {
+    margin-top: 80px;
+}
+.lawn section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.lawn section h2 {
+    text-align: center;
+}
 .lawn html,
 .lawn body,
 .lawn select,
@@ -23,6 +33,7 @@
 	border-collapse:collapse;
 	border-spacing:0;
 	empty-cells:show;
+    margin: 20px;
 }
 .lawn table caption{
 	margin-bottom: 8px;
@@ -33,13 +44,16 @@
 	font-weight:bold;
 	text-align:center;
 	vertical-align:middle;
+    padding: 10px;
+    border-bottom: solid 1px #c3d825;
 }
 .lawn table th.empty {
     width: 100px;
 }
 .lawn table td {
 	text-align:left;
-	vertical-align:top;
+	vertical-align: middle;
+    border-bottom: solid 1px #c3d825;
 }
 .lawn table td.n {
 	text-align:right;
@@ -67,7 +81,7 @@
 	max-height: 100%;
 }
 .lawn p{
-	text-align: justify;
+	text-align: center;
 	text-justify: inter-ideograph;
 }
 .lawn ul {
@@ -96,9 +110,47 @@
 	font-size: 1.8rem;
 	font-weight: normal;
 }
-
+.lawn dl {
+    display: flex;
+    margin-bottom: 15px;
+}
+.lawn dl dt {
+    width: 260px;
+}
+.lawn label {
+    display: block;
+    margin-bottom: 20px;
+}
+.lawn input {
+    display: block;
+    margin-top: 5px;
+}
+.lawn input[type="text"],
+.lawn input[type="email"],
+.lawn input[type="password"] {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.lawn textarea {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 .lawn .pc_none {
     display: none !important;
+}
+.lawn .info_box {
+    background-color: #eaf4fc;
+    color: #000b00;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 15px;
+}
+.lawn .center {
+    text-align: center;
 }
 
 /*  header
@@ -114,8 +166,7 @@
     width: 100%;
     height: 80px;
     padding: 0 20px;
-    background: #000b00;
-    border-bottom: 1px solid #000;
+    background:transparent;
 }
 .lawn header img {
     width: 120px;
@@ -124,17 +175,18 @@
     background: #333;
     font-size: 1.4rem;
     font-weight: bold;
-    color: #fff;
+    color: #eaf4fc;
 }
 .lawn header button a {
-    color: #fff !important;
+    color: #eaf4fc !important;
 }
 /*  footer
 -------------------- */
 .lawn footer {
+    width: 100%;
     padding: 10px 0;
     background: #000b00;
-    color: #fff;
+    color: #eaf4fc;
 }
 .lawn footer .inner {
     display: flex;
@@ -148,7 +200,7 @@
     margin-right: 25px;
 }
 .lawn footer ul li a {
-    color: #fff !important;
+    color: #eaf4fc !important;
 }
 /*  btn
 -------------------- */
@@ -158,15 +210,31 @@
 .lawn .btn_vs {
     width: 100px !important;
 }
+.lawn .btn_white {
+    background-color: #eaf4fc !important;
+    color: #c3d825 !important;
+}
+.lawn .btn_red {
+    background-color: #eaf4fc !important;
+    color: #ee827c !important;
+}
+.lawn_color {
+    background-color: #c3d825;
+    color: #eaf4fc;
+}
 .lawn_inner {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
     font-size: 1.4rem;
 }
 .lawn_title {
-    margin-bottom: 50px;
-    padding: 20px 0;
-    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.lawn_title h1 {
+    margin: 0;
+}
+.lawn_title img {
+    width: 300px;
 }
 .lawn_form {
 
@@ -183,12 +251,19 @@
     display: block;
     width: 100%;
     padding: 15px 0;
+    margin: 10px;
     background: #c3d825;
     border-radius: 50px;
     font-size: 1.4rem;
-    color: #fff;
+    color: #eaf4fc;
     text-align: center;
-
+    border:transparent;
+}
+.lawn_btn:hover {
+    opacity: 0.7;
+}
+.lawn a.lawn_btn {
+    color: #eaf4fc;
 }
 .lawn_index {
 
@@ -197,13 +272,15 @@
 
 }
 .lawn_paginate {
-
+    margin-top: 1.5rem;
+    justify-content: center;
 }
 .lawn_show {
 
 }
-.lawn_info {
-
+.lawn_detail {
+    display: block;
+    margin-left: 20px;
 }
 .lawn_error {
     color: #ee827c;

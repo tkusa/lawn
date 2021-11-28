@@ -4,6 +4,7 @@ namespace App\Models\Lawn;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tkusa\Lawn\Parser;
 
 class %Name% extends Model
 {
@@ -17,5 +18,13 @@ class %Name% extends Model
     protected $fillable = [
         %fillable%
     ];
+
+    /**
+    * Check resource
+    */
+    public function has($resource)
+    {
+        return in_array($resource, Parser::resource('%name%'));
+    }
 
 }

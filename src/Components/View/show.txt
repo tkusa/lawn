@@ -1,10 +1,20 @@
 <section class="lawn_title">
-    <h2>Info of %Name%</h2>
+    <h2>Detail of %Name%</h2>
 </section>
 <section class="lawn_show">
-    <div class="lawn_info">
-        <dl>
-            %info%
-        </dl>
+    <div class="lawn_detail">
+        %info%
+    </div>
+    <div class="center">
+        @if ($%name%->has('edit'))
+            <a class="lawn_btn btn_s" href="{{ route('lawn.%name%.edit', ['id' => $%name%->id]) }}">Edit</a>
+        @endif
+        @if ($%name%->has('destroy'))
+            <form method="post" action="{{ route('lawn.%name%.destroy', ['id' => $%name%->id]) }}">
+                @csrf
+                @method('delete')
+                <button type="submit" class="lawn_btn btn_s btn_red">Delete</button>
+            </form>
+        @endif
     </div>
 </section>

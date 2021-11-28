@@ -6,6 +6,8 @@
         @csrf
         @method('put')
         %form%
-        <button type="submit" class="lawn_btn">Submit</button>
+        <div class="center">
+            <button type="submit" class="lawn_btn">Submit</button>
+        </div>
     </form>
 </section>
